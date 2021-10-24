@@ -2,6 +2,7 @@ package com.rg3.event.util;
 
 import cn.hutool.core.util.StrUtil;
 import com.rg3.event.exception.NegativeNumberException;
+import com.rg3.event.exception.ZeroDivisionException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,7 +15,7 @@ import java.util.Stack;
  * 四则计算器工具类
  */
 public class ArithmaticUtil {
-
+    
     private static Map<String, Integer> operatorMap = new HashMap<>();
     static {
         operatorMap.put("×", 2);
@@ -137,6 +138,9 @@ public class ArithmaticUtil {
                 } else if ("×".equals(item)) {
                     res = multiplication(num1, num2);
                 } else if ("÷".equals(item)) {
+                    if("0/1".equals(num2)) {
+                        throw new ZeroDivisionException("除数为零");
+                    }
                     res = division(num1, num2);
                 } else {
                     throw new RuntimeException("运算符有误");
