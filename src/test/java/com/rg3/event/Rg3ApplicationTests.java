@@ -11,10 +11,4 @@ class Rg3ApplicationTests {
     void contextLoads() {
     }
 
-    @Test
-    void test(){
-        String str = "8))";
-        System.out.println(str.substring(str.lastIndexOf("8") + 1));
-     //   System.out.println(StrUtil.subBefore(str, ")", false));
-    }
 }

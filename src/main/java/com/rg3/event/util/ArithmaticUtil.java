@@ -19,10 +19,9 @@ public class ArithmaticUtil {
     static {
         operatorMap.put("*", 2);
         operatorMap.put("/", 2);
-        operatorMap.put("-", 2);
-        operatorMap.put("+", 2);
+        operatorMap.put("-", 1);
+        operatorMap.put("+", 1);
     }
-
     /**
      * @param expression 表达式
      * @return 四则运算的结果
@@ -61,7 +60,7 @@ public class ArithmaticUtil {
                 s1.pop();
             } else {
                 //当item的优先级小于等于s1栈顶运算符，将s1栈顶的运算符弹出并压入到s2中，再次转到循环中与s1中的新的栈顶元素比较
-                while (s1.size() != 0 && operatorMap.get(s1.peek()) >= operatorMap.get(item)) {
+                while (s1.size() != 0 && operatorMap.getOrDefault(s1.peek(), 0) >= operatorMap.getOrDefault(item, 0)) {
                     s2.add(s1.pop());
                 }
                 //还需要将item压入栈
@@ -95,7 +94,7 @@ public class ArithmaticUtil {
                 //获取数字
                 String num = StrUtil.subBefore(ele, ")", false);
                 //获取")"
-                suffix = ele.substring(ele.lastIndexOf(num) + 1);
+                suffix = StrUtil.subAfter(ele, num, true);
                 ele = num;
             }
             list.add(ele);
