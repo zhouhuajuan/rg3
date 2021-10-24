@@ -1,6 +1,7 @@
 package com.rg3.event.util;
 
 import cn.hutool.core.util.StrUtil;
+import com.rg3.event.exception.NegativeNumberException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,7 +16,6 @@ import java.util.Stack;
 public class ArithmaticUtil {
 
     private static Map<String, Integer> operatorMap = new HashMap<>();
-
     static {
         operatorMap.put("*", 2);
         operatorMap.put("/", 2);
@@ -131,6 +131,9 @@ public class ArithmaticUtil {
                     res = add(num1, num2);
                 } else if ("-".equals(item)) {
                     res = minus(num1, num2);
+                    if(res.contains("-")) {
+                        throw new NegativeNumberException("存在负数");
+                    }
                 } else if ("*".equals(item)) {
                     res = multiplication(num1, num2);
                 } else if ("/".equals(item)) {
