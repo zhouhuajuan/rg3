@@ -1,9 +1,9 @@
-package com.rg3.event.utils;
+package com.rg3.event.util;
 
 /**
  * @author zbr
  */
-public class MathUtils {
+public class MathUtil {
 
     /**
      * 求最大公约数，辗转相除法

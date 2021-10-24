@@ -1,4 +1,4 @@
-package com.rg3.event.utils;
+package com.rg3.event.util;
 
 import cn.hutool.core.util.StrUtil;
 
@@ -12,7 +12,7 @@ import java.util.Stack;
  * @author zbr
  * 四则计算器工具类
  */
-public class ArithmaticUtils {
+public class ArithmaticUtil {
 
     private static Map<String, Integer> operatorMap = new HashMap<>();
 
@@ -221,12 +221,12 @@ public class ArithmaticUtils {
             result = String.valueOf(numerator1 + numerator2);
         } else {
             //获取分母的最小公倍数
-            int denominatorLCM = MathUtils.lcm(denominator1, denominator2);
+            int denominatorLCM = MathUtil.lcm(denominator1, denominator2);
             //获取相加后的分子
             int addNumerator = numerator1 * denominatorLCM / denominator1 + numerator2 * denominatorLCM / denominator2;
 
             //获取分子分母的最大公因数
-            int fractionGCD = MathUtils.gcd(Math.max(denominatorLCM, addNumerator), Math.min(denominatorLCM, addNumerator));
+            int fractionGCD = MathUtil.gcd(Math.max(denominatorLCM, addNumerator), Math.min(denominatorLCM, addNumerator));
             //化简
             int newNumerator = addNumerator / fractionGCD;
             int newDenominator = denominatorLCM / fractionGCD;
@@ -295,7 +295,7 @@ public class ArithmaticUtils {
             int mulDenominator = denominator1 * denominator2;
 
             //获取最大公倍数
-            int gcd = MathUtils.gcd(Math.max(mulDenominator, mulNumerator), Math.min(mulDenominator, mulNumerator));
+            int gcd = MathUtil.gcd(Math.max(mulDenominator, mulNumerator), Math.min(mulDenominator, mulNumerator));
 
             //进行化简
             int newNumerator = mulNumerator / gcd;
