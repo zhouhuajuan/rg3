@@ -17,8 +17,8 @@ public class ArithmaticUtil {
 
     private static Map<String, Integer> operatorMap = new HashMap<>();
     static {
-        operatorMap.put("*", 2);
-        operatorMap.put("/", 2);
+        operatorMap.put("×", 2);
+        operatorMap.put("÷", 2);
         operatorMap.put("-", 1);
         operatorMap.put("+", 1);
     }
@@ -134,9 +134,9 @@ public class ArithmaticUtil {
                     if(res.contains("-")) {
                         throw new NegativeNumberException("存在负数");
                     }
-                } else if ("*".equals(item)) {
+                } else if ("×".equals(item)) {
                     res = multiplication(num1, num2);
-                } else if ("/".equals(item)) {
+                } else if ("÷".equals(item)) {
                     res = division(num1, num2);
                 } else {
                     throw new RuntimeException("运算符有误");
