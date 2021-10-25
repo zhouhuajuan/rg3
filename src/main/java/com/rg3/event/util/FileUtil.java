@@ -7,9 +7,11 @@ import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -62,28 +64,27 @@ public class FileUtil {
                 }
             }
         }
-//        zos.flush();
 
-
-
-//        os.write(bos.toByteArray());
-        // os.flush();
     }
 
     public static void downloadFile(String fileName, String content){
         File file = new File(fileName);
         FileWriter fileWriter = null;
-
+        FileOutputStream fos = null;
+        OutputStreamWriter osw = null;
         try {
-            fileWriter = new FileWriter(file, true);
-            fileWriter.write(content);
+            fos = new FileOutputStream(file, true);
+//            fileWriter = new FileWriter(file, true);
+             osw = new OutputStreamWriter(fos, StandardCharsets.UTF_8);
+//            fileWriter.write(content);
+            osw.write(content);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
 
-            if(fileWriter != null) {
+            if(osw != null) {
                 try {
-                    fileWriter.close();
+                    osw.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -92,7 +93,7 @@ public class FileUtil {
 
     }
 
-    public static List<String> readFile(String filePath)  {
+    public static List<String> readFile(String filePath) {
         ByteArrayOutputStream bos = null;
         BufferedInputStream bis = null;
         try {
@@ -123,7 +124,14 @@ public class FileUtil {
                 }
             }
         }
-        return fileToList(bos.toString());
+        String result = null;
+        try {
+            result = bos.toString("UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        return fileToList(result);
 //        return null;
     }
 
@@ -132,7 +140,7 @@ public class FileUtil {
         String[] split = fileContent.split("\n");
 
         for(String content : split){
-            list.add(StrUtil.subBefore(content, "\r", true));
+            list.add(StrUtil.subAfter(StrUtil.subBefore(content, "\r", true), ".", false));
         }
         return list;
     }
