@@ -76,9 +76,9 @@ public class FileUtil {
 
     public static void downloadFile(String fileName, String content){
         File file = new File(fileName);
-        if (!file.exists()){
-            throw new FileNotExistsException("文件路径错误，不存在");
-        }
+//        if (!file.exists()){
+//            throw new FileNotExistsException("文件路径错误，不存在");
+//        }
         FileWriter fileWriter = null;
 
         try {
@@ -143,20 +143,5 @@ public class FileUtil {
         }
         return list;
     }
-    @Test
-    public void test(){
-//        try {
-//            String res = readFile("1.txt");
-//            List<String> list = new ArrayList<>();
-//            String[] split = res.split("\n");
-//            for (String content : split) {
-//                list.add(StrUtil.subBefore(content,"\r", true));
-//                System.out.println(content);
-//                System.out.println();
-//            }
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-    }
+
 }
