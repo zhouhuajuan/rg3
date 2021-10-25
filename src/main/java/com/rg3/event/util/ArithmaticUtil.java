@@ -75,7 +75,7 @@ public class ArithmaticUtil {
     }
 
 
-    //将一个逆波兰表达式依次将数据和运算符放到ArrayList中,而不是直接去取，不然的话要设置一个个index，就太累了
+
     private static List<String> getListString(String suffixExpression) {
         //将suffixExpression 分割
         String[] split = suffixExpression.split(" ");

@@ -21,7 +21,7 @@ public class Main {
 //        args[2] = "-a";
 //        args[3] = "target/Answers.txt";
 //        args[0] = "-n";
-//        args[1] = "10";
+//        args[1] = "1000";
 //        args[2] = "-r";
 //        args[3] = "10";
 //        main(args);
@@ -70,7 +70,7 @@ public class Main {
                         System.out.println("参数数值需为整数");
                         System.exit(0);
                     }
-                }else if (("-e".equals(args[0]) && "-a".equals(args[2])) || ("-e".equals(args[0]) && "-a".equals(args[2]))) {
+                }else if (("-e".equals(args[0]) && "-a".equals(args[2])) || ("-e".equals(args[2]) && "-a".equals(args[0]))) {
                 String answerPath = null;
                 String exercisePath = null;
 
