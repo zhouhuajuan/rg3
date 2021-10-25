@@ -43,6 +43,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.rg3.event.application.Main</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>

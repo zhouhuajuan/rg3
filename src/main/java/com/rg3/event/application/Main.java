@@ -35,14 +35,15 @@ public class Main {
                         StringBuilder exerciseString = new StringBuilder();
                         StringBuilder answerString = new StringBuilder();
 
-                        for(String exercise : exerciseList) {
-                            String res = ArithmaticUtil.calculate(exercise);
-                            int index = exerciseList.indexOf(exercise) + 1;
+                        //for(String exercise : exerciseList) {
+                        for(int i=0;i<exerciseList.size();i++) {
+                            String res = ArithmaticUtil.calculate(exerciseList.get(i));
+                            //int index = exerciseList.indexOf(exercise) + 1;
 
-                            exerciseString.append(index).append(".");
-                            exerciseString.append(exercise).append("\n");
+                            exerciseString.append(i+1).append(".");
+                            exerciseString.append(exerciseList.get(i)).append("\n");
 
-                            answerString.append(index).append(".");
+                            answerString.append(i+1).append(".");
                             answerString.append(res).append(".");
                         }
 
@@ -69,13 +70,14 @@ public class Main {
                     List<Integer> correctList = new ArrayList<>();
                     List<Integer> wrongList = new ArrayList<>();
 
-                    for(String exercise : exerciseList){
-                        String correctAnswer = ArithmaticUtil.calculate(exercise);
-                        int index = exerciseList.indexOf(exercise);
-                        if (correctAnswer.equals(answerList.get(index))) {
-                            correctList.add(index + 1);
+                    //for(String exercise : exerciseList){
+                    for (int i=0;i<exerciseList.size();i++){
+                        String correctAnswer = ArithmaticUtil.calculate(exerciseList.get(i));
+                        //int index = exerciseList.indexOf(exercise);
+                        if (correctAnswer.equals(answerList.get(i+1))) {
+                            correctList.add(i + 1);
                         }else{
-                            wrongList.add(index + 1);
+                            wrongList.add(i + 1);
                         }
                     }
 

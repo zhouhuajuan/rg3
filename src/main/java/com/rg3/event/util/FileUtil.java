@@ -32,7 +32,7 @@ public class FileUtil {
 
         response.setHeader("content-type", "application/octet-stream");
         response.setContentType("application/octet-stream;charset=UTF-8");
-        response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode("a.zip", StandardCharsets.UTF_8.toString()));
+        response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode("result.zip", StandardCharsets.UTF_8.toString()));
 
 
         ZipOutputStream zos = null;

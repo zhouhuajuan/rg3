@@ -30,17 +30,18 @@ public class ArithmaticServiceImpl implements ArithmaticService {
         StringBuilder answers  = new StringBuilder();
         StringBuilder exercises  = new StringBuilder();
 
-        for(String exercise : exerciseList) {
-            String result = ArithmaticUtil.calculate(exercise);
-            int index = exerciseList.indexOf(exercise) + 1;
-            answers.append(index);
+        //for(String exercise : exerciseList) {
+        for (int i=0;i<exerciseList.size();i++){
+            String result = ArithmaticUtil.calculate(exerciseList.get(i));
+            //int index = exerciseList.indexOf(exerciseList.get(i)) + 1;
+            answers.append(i+1);
             answers.append(".");
             answers.append(result);
             answers.append("\n");
 
-            exercises.append(index);
+            exercises.append(i+1);
             exercises.append(".");
-            exercises.append(exercise);
+            exercises.append(exerciseList.get(i));
             exercises.append("\n");
         }
         FileUtil.downloadZip(response, answers.toString(), exercises.toString());
