@@ -1,5 +1,7 @@
 package com.rg3.event.util;
 
+import com.rg3.event.exception.FileNotExistsException;
+
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -67,6 +69,9 @@ public class FileUtil {
 
     public static void downloadFile(String fileName, String content){
         File file = new File(fileName);
+        if (!file.exists()){
+            throw new FileNotExistsException("文件路径错误，不存在");
+        }
         FileWriter fileWriter = null;
 
         try {

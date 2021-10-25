@@ -11,7 +11,7 @@ import java.util.Random;
 public class OperatorUtil {
 
     //随机生成运算符的个数，范围是1-3
-    private static int getOperatorNum(){
+    public static int getOperatorNum(){
         Random random = new Random();
         return (random.nextInt(3)+1);
     }
