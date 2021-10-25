@@ -2,6 +2,8 @@ package com.rg3.event.util;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
@@ -63,15 +65,25 @@ public class FileUtil {
        // os.flush();
     }
 
-//    public static void downloadFile(HttpServletResponse response, List<String> outputList, String fileName) throws IOException {
-//        StringBuilder sb = new StringBuilder();
-//
-//        for(String output : outputList) {
-//            sb.append(outputList.indexOf(output) + 1);
-//            sb.append(".");
-//            sb.append(output);
-//            sb.append("\n");
-//        }
-//        downloadFile(response, sb.toString(), fileName);
-//    }
+    public static void downloadFile(String fileName, String content){
+        File file = new File(fileName);
+        FileWriter fileWriter = null;
+
+        try {
+            fileWriter = new FileWriter(file, true);
+            fileWriter.write(content);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+
+            if(fileWriter != null) {
+                try {
+                    fileWriter.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+    }
 }

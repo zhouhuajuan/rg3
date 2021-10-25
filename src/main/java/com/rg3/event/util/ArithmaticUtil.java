@@ -15,7 +15,6 @@ import java.util.Stack;
  * 四则计算器工具类
  */
 public class ArithmaticUtil {
-    
     private static Map<String, Integer> operatorMap = new HashMap<>();
     static {
         operatorMap.put("×", 2);
