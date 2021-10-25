@@ -1,16 +1,12 @@
 package com.rg3.event.util;
 
 import cn.hutool.core.util.StrUtil;
-import com.rg3.event.exception.FileNotExistsException;
-import org.junit.jupiter.api.Test;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -76,9 +72,6 @@ public class FileUtil {
 
     public static void downloadFile(String fileName, String content){
         File file = new File(fileName);
-//        if (!file.exists()){
-//            throw new FileNotExistsException("文件路径错误，不存在");
-//        }
         FileWriter fileWriter = null;
 
         try {
